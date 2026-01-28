@@ -192,10 +192,10 @@ from project.api.books.schemas import BookSchema
     422: ErrorSchema,
     500: ErrorSchema,
 })
-async def get_book_by_id(id: NanoID) -> BookSchema:
+async def get_book_by_id(book_id: NanoID) -> BookSchema:
     """Fetches a book by ID."""
 
-    book = Book.get_or_none(id=id)
+    book = Book.get_or_none(id=book_id)
 
     if book is None:
         raise NotFoundError("book")
