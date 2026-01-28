@@ -1,0 +1,19 @@
+[project]
+name = "project"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "aerich[toml]>=0.9.2",
+    "fastapi[standard]>=0.128.0",
+    "nanoid>=2.0.0",
+    "orjson>=3.11.5",
+    "python-dotenv>=1.2.1",
+    "tortoise-orm[accel,asyncpg]>=0.25.3",
+]
+
+[tool.aerich]
+tortoise_orm = "project.lib.settings.DATABASE"
+location = "project/db/migrations"
+src_folder = "./."
