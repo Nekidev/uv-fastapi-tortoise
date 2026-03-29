@@ -20,7 +20,7 @@ async def on_startup():
 
         await command.upgrade()
 
-    await Tortoise.init(config=settings.CONFIG)
+    await Tortoise.init(config=settings.DATABASE)
 
 
 async def on_shutdown():
