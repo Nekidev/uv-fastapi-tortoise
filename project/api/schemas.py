@@ -27,3 +27,45 @@ class ErrorSchema(BaseModel):
 
     title: str
     message: str
+
+
+class Page[T](BaseModel):
+    """A standard paginated response schema."""
+
+    items: list[T]
+    total: int
+
+    @classmethod
+    async def from_queryset(
+        cls, schema: type[BaseModel], qs: QuerySet, params: "PageParams"
+    ) -> "Page[T]":
+        """Creates a paginated response from a Tortoise ORM QuerySet.
+
+        Args:
+            schema (type[Schema]): The schema type to serialize items with.
+            qs (QuerySet): The Tortoise ORM QuerySet to paginate.
+            params (PageParams): The pagination parameters.
+
+        Returns:
+            Page[T]: A paginated response containing serialized items.
+        """
+
+        total = await qs.count()
+        items = await qs.limit(params.limit).offset(params.offset)
+
+        return cls(items=[schema.from_orm(item) for item in items], total=total)
+
+
+class _PageParams(BaseModel):
+    """The standard pagination query parameters."""
+
+    limit: int = Field(25, le=100)
+    offset: int = 0
+
+
+PageParams = Annotated[_PageParams, Query()]
+"""The standard pagination query parameters annotation.
+
+It wraps a `_PageParams` model for use in FastAPI route definitions without requiring
+`Annotated[PageParams, Query()]` on every use.
+"""
