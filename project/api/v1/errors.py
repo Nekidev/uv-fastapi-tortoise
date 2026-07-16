@@ -1,6 +1,6 @@
 from fastapi.responses import ORJSONResponse
 
-from project.api.schemas import ErrorSchema
+from project.api.v1.schemas import ErrorSchema
 
 
 class BaseError(Exception):

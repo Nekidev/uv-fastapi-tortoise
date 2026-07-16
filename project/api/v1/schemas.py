@@ -1,6 +1,10 @@
 from typing import Annotated
 
+from fastapi import Query
+
 from pydantic import BaseModel, Field
+
+from tortoise.queryset import QuerySet
 
 
 NanoID = Annotated[

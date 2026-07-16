@@ -2,13 +2,13 @@ from fastapi import FastAPI
 
 from contextlib import asynccontextmanager
 
-from project.db.lifespan import on_startup, on_shutdown
+from project.db import lifespan as db
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await on_startup()
+    await db.on_startup()
 
     yield
 
-    await on_shutdown()
+    await db.on_shutdown()

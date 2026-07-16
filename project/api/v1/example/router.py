@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from project.api.example.schemas import MessageSchema
+from project.api.v1.example.schemas import MessageSchema
 
 
 router = APIRouter(tags=["Example"])

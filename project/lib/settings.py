@@ -15,9 +15,9 @@ DATABASE = {
         "models": {
             "models": [
                 "project.db.models.example",
-                "aerich.models",  # Keep this one for migrations.
             ],
             "default_connection": "default",
+            "migrations": "project.db.migrations",
         }
     },
     "use_tz": True,
