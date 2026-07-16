@@ -29,15 +29,15 @@ class BookSchema(BaseModel):
 class ErrorSchema(BaseModel):
     """A standard error response schema."""
 
-    title: str
-    message: str
+    title: str = Field(..., description="A short, human-readable title of the error.")
+    message: str = Field(..., description="A more detailed description of the error.")
 
 
 class Page[T](BaseModel):
     """A standard paginated response schema."""
 
-    items: list[T]
-    total: int
+    items: list[T] = Field(..., description="The items in the current page.")
+    total: int = Field(..., description="The amount of items available across all pages for this query.")
 
     @classmethod
     async def from_queryset(
