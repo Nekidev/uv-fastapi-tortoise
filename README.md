@@ -451,7 +451,8 @@ $ uv run uvicorn project:app --reload --reload-include "docs/**/*.md"
 `project` is your import name.
 
 This template ships with a `Dockerfile` that will work out of the box by default in
-most cases. By default, it uses the following environment variables:
+most cases (make sure to update the project's name inside it if you change it). By
+default, it uses the following environment variables:
 
 | Name        | Description                                  | Possible Values                        | Default    |
 | ----------- | -------------------------------------------- | -------------------------------------- | ---------- |
