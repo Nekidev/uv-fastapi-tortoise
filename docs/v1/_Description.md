@@ -2,5 +2,5 @@ To run the project with live reload including the documentation, run uvicorn wit
 parameters:
 
 ```sh
-uv run uvicorn project:app --reload --reload-include "docs/**/*.md"
+uv run uvicorn project:app --reload --reload-include "docs/**/*.md" --reload-include .env
 ```
