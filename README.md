@@ -445,7 +445,7 @@ your now-renamed source code folder.
 To start the server, run:
 
 ```sh
-$ uv run uvicorn project:app --reload --reload-include "docs/**/*.md"
+$ uv run uvicorn project:app --reload --reload-include "docs/**/*.md" --reload-include .env
 ```
 
 `project` is your import name.
