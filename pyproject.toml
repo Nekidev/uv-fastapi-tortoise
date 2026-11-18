@@ -12,5 +12,20 @@ dependencies = [
     "tortoise-orm[accel,asyncpg]>=1.1.7",
 ]
 
+[project.scripts]
+"run:debug" = "scripts.run_debug:main"
+"run:release" = "scripts.run_release:main"
+
 [tool.tortoise]
 tortoise_orm = "project.lib.settings.DATABASE"
+
+[tool.ruff]
+lint.ignore = ["I001"]
+line-length = 100
+
+[tool.uv]
+package = true
+
+[tool.setuptools.packages.find]
+include = ["project*", "scripts*"]
+exclude = ["data*", "vendored*"]

@@ -11,4 +11,4 @@ RUN python3 -m uv sync --no-dev
 COPY . /app/
 
 ENTRYPOINT [ "/bin/sh", "-c" ]
-CMD [ "cd /app && python3 -m uv run --no-dev uvicorn project:app --workers ${WORKERS:-$(nproc)} --host ${BIND_HOST:-0.0.0.0} --port ${BIND_PORT:-8000}" ]
+CMD [ "cd /app && uv run run:release" ]
